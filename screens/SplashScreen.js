@@ -1,60 +1,75 @@
-import React, { useState } from 'react'
-import { Button, TextInput, View } from 'react-native'
+import React, { useEffect, useRef, useState } from 'react'
+import { View } from 'react-native'
 import { THREE } from 'expo-three'
-import { Canvas } from 'react-three-fiber'
-import Stars from './Stars'
+import { Canvas, extend, useFrame, useThree } from 'react-three-fiber'
+import Effects from './Effects'
+import LoginOverlay from './LoginOverlay'
+import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+// import { TrackballControls } from 'drei'
+
+extend({ DeviceOrientationControls, OrbitControls })
+
+const CameraControls = () => {
+    // Get a reference to the Three.js Camera, and the canvas html element.
+    // We need these to setup the OrbitControls component.
+    // https://threejs.org/docs/#examples/en/controls/OrbitControls
+    const {
+        camera,
+        gl: { domElement }
+    } = useThree()
+    // Ref to the controls, so that we can update them on every frame using useFrame
+    const controls = useRef()
+    useFrame((state) => controls.current.update())
+    return <deviceOrientationControls ref={controls} args={[camera]} />
+    // return (
+    //     <orbitControls
+    //         ref={controls}
+    //         args={[camera, domElement]}
+    //         enableZoom={false}
+    //         maxAzimuthAngle={Math.PI / 4}
+    //         maxPolarAngle={Math.PI}
+    //         minAzimuthAngle={-Math.PI / 4}
+    //         minPolarAngle={0}
+    //     />
+    // )
+}
 
 export default function SplashScreen() {
-    const [value, onChangeText] = useState('Useless Placeholder')
-    const submit = () => {
-        alert('Submitted ' + value)
-    }
+    // let theCamera, controls
+
+    // const [yoCamera, setCamera] = useState(null)
+
     return (
         <View style={{ flex: 1 }}>
             <Canvas
                 concurrent
-                gl={{ antialias: false }}
-                camera={{ position: [0, 0, 2000], near: 0.01, far: 10000, fov: 70 }}
-                onCreated={({ gl, camera }) => {
-                    gl.gammaInput = true
-                    gl.toneMapping = THREE.Uncharted2ToneMapping
-                    gl.setClearColor(new THREE.Color('#02020a'))
+                onCreated={(props) => {
+                    // console.log('onCreated props:', props)
+                    // console.log('DeviceOrientationControls', DeviceOrientationControls)
+                    const { camera, gl, scene } = props
+                    // theCamera = camera
+                    // setCamera(camera)
+                    // console.log(theCamera)
+                    gl.setClearColor(0x000000)
+                    // https://stackoverflow.com/questions/37083229/three-js-gridhelper-makes-non-standard-grid
+                    var grid = new THREE.GridHelper(10, 10, 0xff0000, 0x00ff00)
+                    grid.geometry.rotateX(Math.PI / 2)
+                    var vector = new THREE.Vector3(1, 1, 1)
+                    grid.lookAt(vector)
+                    scene.add(grid)
+
+                    // controls = new DeviceOrientationControls(camera)
+                    // controls.connect()
+                    // console.log('controls:', controls)
                 }}
-                style={{ backgroundColor: 'black' }}
             >
-                <fog attach="fog" args={['#070710', 100, 700]} />
-                <ambientLight intensity={0.25} />
-                <Stars />
+                <CameraControls />
+                <ambientLight intensity={0.75} />
+                <Effects />
+                {/* <TrackballControls /> */}
             </Canvas>
-            <TextInput
-                style={{
-                    height: 60,
-                    borderColor: 'gray',
-                    borderWidth: 1,
-                    backgroundColor: 'rgba(0,0,0,0.5)',
-                    color: '#fff',
-                    padding: 12,
-                    fontSize: 18,
-                    position: 'absolute',
-                    top: 350,
-                    left: 40,
-                    width: '80%'
-                }}
-                onChangeText={(text) => onChangeText(text)}
-                value={value}
-            />
-            <View style={{ position: 'absolute', top: 420, left: 160 }}>
-                <Button
-                    onPress={submit}
-                    style={{
-                        backgroundColor: '#999',
-                        color: '#fff',
-                        height: 40,
-                        width: 340
-                    }}
-                    title="Submit"
-                />
-            </View>
+            <LoginOverlay />
         </View>
     )
 }

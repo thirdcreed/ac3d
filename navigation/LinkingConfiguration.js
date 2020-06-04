@@ -7,8 +7,8 @@ export default {
             path: '/',
             screens: {
                 Splash: 'splash',
-                Home: 'home',
-                Links: 'links'
+                Gyro: 'gyro',
+                DeviceMotion: 'devicemotion'
             }
         }
     }

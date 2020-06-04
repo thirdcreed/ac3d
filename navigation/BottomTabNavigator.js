@@ -3,11 +3,13 @@ import * as React from 'react'
 
 import TabBarIcon from '../components/TabBarIcon'
 import SplashScreen from '../screens/SplashScreen'
-import HomeScreen from '../screens/HomeScreen'
+// import HomeScreen from '../screens/HomeScreen'
+import GyroScreen from '../screens/GyroScreen'
+import DeviceMotionScreen from '../screens/DeviceMotionScreen'
 import LinksScreen from '../screens/LinksScreen'
 
 const BottomTab = createBottomTabNavigator()
-const INITIAL_ROUTE_NAME = 'Splash'
+const INITIAL_ROUTE_NAME = 'DeviceMotion'
 
 export default function BottomTabNavigator({ navigation, route }) {
     // Set the header title on the parent stack navigator depending on the
@@ -22,27 +24,27 @@ export default function BottomTabNavigator({ navigation, route }) {
                 component={SplashScreen}
                 options={{
                     headerShown: false, // ??
-                    title: 'Splashhhh',
+                    title: 'Splash',
                     tabBarIcon: ({ focused }) => (
                         <TabBarIcon focused={focused} name="md-code-working" />
                     )
                 }}
             />
             <BottomTab.Screen
-                name="Home"
-                component={HomeScreen}
+                name="Gyro"
+                component={GyroScreen}
                 options={{
-                    title: 'Get Started',
+                    title: 'Gyro Test',
                     tabBarIcon: ({ focused }) => (
                         <TabBarIcon focused={focused} name="md-code-working" />
                     )
                 }}
             />
             <BottomTab.Screen
-                name="Links"
-                component={LinksScreen}
+                name="DeviceMotion"
+                component={DeviceMotionScreen}
                 options={{
-                    title: 'Resources',
+                    title: 'Device Motion',
                     tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />
                 }}
             />
