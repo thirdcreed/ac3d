@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Text, View } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import { Canvas, useThree } from 'react-three-fiber'
 // import Effects from './Effects'
 import { Euler, MathUtils, Quaternion, Vector3 } from 'three'
@@ -12,6 +12,8 @@ export default function DeviceMotionScreen() {
     const [data, setData] = useState({})
     const actions = useStore((state) => state.actions)
     console.log('rerender :((')
+
+    StatusBar.setBarStyle('light-content')
 
     const Controls = () => {
         const { camera } = useThree()
@@ -114,7 +116,7 @@ export default function DeviceMotionScreen() {
                     // console.log(theCamera)
 
                     gl.setClearColor(0x000000)
-                    var grid = new THREE.GridHelper(50, 100, 0xff0000, 0x00ff00)
+                    var grid = new THREE.GridHelper(50, 100, 0x00ff00, 0x18cae6)
                     grid.geometry.rotateX(Math.PI / 4)
                     // grid.geometry.translateY(-5)
                     var vector = new THREE.Vector3(1, 1, 1)
