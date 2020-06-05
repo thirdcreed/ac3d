@@ -2,14 +2,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import * as React from 'react'
 
 import TabBarIcon from '../components/TabBarIcon'
-import SplashScreen from '../screens/SplashScreen'
-// import HomeScreen from '../screens/HomeScreen'
-import GyroScreen from '../screens/GyroScreen'
 import DeviceMotionScreen from '../screens/DeviceMotionScreen'
-import LinksScreen from '../screens/LinksScreen'
+import GyroScreen from '../screens/GyroScreen'
+import WebRTCScreen from '../screens/WebRTCScreen'
 
 const BottomTab = createBottomTabNavigator()
-const INITIAL_ROUTE_NAME = 'DeviceMotion'
+const INITIAL_ROUTE_NAME = 'Splash'
 
 export default function BottomTabNavigator({ navigation, route }) {
     // Set the header title on the parent stack navigator depending on the
@@ -21,7 +19,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
             <BottomTab.Screen
                 name="Splash"
-                component={SplashScreen}
+                component={DeviceMotionScreen}
                 options={{
                     headerShown: false, // ??
                     title: 'Splash',
@@ -42,9 +40,9 @@ export default function BottomTabNavigator({ navigation, route }) {
             />
             <BottomTab.Screen
                 name="DeviceMotion"
-                component={DeviceMotionScreen}
+                component={WebRTCScreen}
                 options={{
-                    title: 'Device Motion',
+                    title: 'WebRTC Test',
                     tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />
                 }}
             />

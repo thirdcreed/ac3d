@@ -32,7 +32,7 @@ And see [inspiration](https://github.com/ArcadeCity/ac3d/wiki/Inspiration).
 * Integrates our Arcade Token (Currently
   [$ARCD](https://etherscan.io/token/0xb581e3a7db80fbaa821ab39342e9cbfd2ce33c23?a=0x3b2470e99b402a333a82ee17c3244ff04c79ec6f)
   on Ethereum, soon with a 1:1 bridge to our forthcoming $ARCF token on Flow)
-* Backend TBD, likely Go and/or Laravel
+* Backend: [Go](https://golang.org/)
 
 #### Contributing
 
