@@ -23,12 +23,15 @@ And see [inspiration](https://github.com/ArcadeCity/ac3d/wiki/Inspiration).
 
 #### Tech stack
 
-* [React Native](https://reactnative.dev/) via [Expo](https://expo.io/)
+* [React Native](https://reactnative.dev/) via [Expo](https://expo.io/) ([ejected](https://docs.expo.io/bare/customizing/))
 * [three.js](https://threejs.org/) and [react-three-fiber](https://github.com/react-spring/react-three-fiber)
 * [zustand](https://zustand.surge.sh/) for state management
 * [react-navigation](https://reactnavigation.org/) v5
+* [WebRTC](https://webrtc.org/) via [react-native-webrtc](https://github.com/react-native-webrtc/react-native-webrtc) & borrowing from [jitsi-meet](https://github.com/jitsi/jitsi-meet)
 * [Flow](https://www.onflow.org/) blockchain with built-in [custodial wallet](https://github.com/onflow/flow-js-sdk/blob/master/packages/fcl/src/wallet-provider-spec/custodial.md)
-* Integrates our Arcade Token (Currently [$ARCD](https://etherscan.io/token/0xb581e3a7db80fbaa821ab39342e9cbfd2ce33c23?a=0x3b2470e99b402a333a82ee17c3244ff04c79ec6f) on Ethereum, soon on Flow)
+* Integrates our Arcade Token (Currently
+  [$ARCD](https://etherscan.io/token/0xb581e3a7db80fbaa821ab39342e9cbfd2ce33c23?a=0x3b2470e99b402a333a82ee17c3244ff04c79ec6f)
+  on Ethereum, soon with a 1:1 bridge to our forthcoming $ARCF token on Flow)
 * Backend TBD, likely Go and/or Laravel
 
 #### Contributing
@@ -38,3 +41,11 @@ cityhall@arcade.city to get plugged in.
 
 Code is [licensed GPLv3](https://github.com/ArcadeCity/ac3d/blob/docs/LICENSE), meaning you can re-use our code in your own projects,
 but any modifications must also be publicly available under the GPLv3.
+
+#### Further reading
+
+* [Foundational Principles & Technologies for the Metaverse](https://m3-org.github.io/research/sweeney.html) - Tim Sweeney,
+  Founder & CEO, Epic Games - July 2019
+* [Evaluating the Potential of Cooperative Ridesourcing: A Case Study of Arcade
+  City in Austin, Texas](https://arcade.city/files/ArcadeCity_FinalReport.pdf) -
+  Sustainable Economies Law Center - November 2019

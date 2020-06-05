@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ac3d",
+    "name": "Arcade City",
     "slug": "ac3d",
     "platforms": [
       "ios",
@@ -23,10 +23,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "arcade.city.mobile"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "android": {
+      "package": "arcade.city.mobile"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
