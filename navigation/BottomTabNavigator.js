@@ -5,6 +5,7 @@ import TabBarIcon from '../components/TabBarIcon'
 import DeviceMotionScreen from '../screens/DeviceMotionScreen'
 import GyroScreen from '../screens/GyroScreen'
 import WebRTCScreen from '../screens/WebRTCScreen'
+import WebsocketsScreen from '../screens/WebsocketsScreen'
 
 const BottomTab = createBottomTabNavigator()
 const INITIAL_ROUTE_NAME = 'Splash'
@@ -23,6 +24,16 @@ export default function BottomTabNavigator({ navigation, route }) {
                 options={{
                     headerShown: false, // ??
                     title: 'Splash',
+                    tabBarIcon: ({ focused }) => (
+                        <TabBarIcon focused={focused} name="md-code-working" />
+                    )
+                }}
+            />
+            <BottomTab.Screen
+                name="Websockets"
+                component={WebsocketsScreen}
+                options={{
+                    title: 'Websockets Test',
                     tabBarIcon: ({ focused }) => (
                         <TabBarIcon focused={focused} name="md-code-working" />
                     )
